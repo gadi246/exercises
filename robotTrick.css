@@ -1,0 +1,16 @@
+.robo {
+    width: 100px;
+    height: 97px;
+    background:url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS2FMyx1F7rCAejiLSABRSPFfzFQZP8TFQosKpCgVYw3zGyIQgzFA');
+    background-size:cover;
+    transform: rotate(90deg);
+    position: absolute;
+
+
+
+}
+.wrapper {
+    display:flex;
+    position:absolute;
+    bottom:5px;
+}
