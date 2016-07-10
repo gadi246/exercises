@@ -50,9 +50,11 @@ Part.prototype.getPrice = function(currency){
 
 function NitroEngine() {
     this.speed = 140;
+    this.fuelType = FUEL_TYPES.Nitro
 }
 function JetEngine() {
     this.speed = 180;
+    this.fuelType = FUEL_TYPES.Jet
 }
 function Wheel() {}
 function FuelTank(fuelType, amount) {
@@ -79,14 +81,17 @@ function FuelTank(fuelType, amount) {
             for (var i = 0; i < parts.length; i++) {
                 sum += parts[i].getPrice(currency);
             }
-            return sum;
+            return sum + currency.sign;
         }
         this.move = function (amount) {
             var hasEngine = false;
             for (var j = 0; j < parts.length; j++) {
                 if (parts[j] instanceof NitroEngine || parts[j] instanceof JetEngine) {
                     hasEngine = true;
-                    return  parts[j].speed * amount;
+                    var distance = 'moves: ' + parts[j].speed * amount;
+                    var distancePrice =   'costs: ' + parts[j].fuelType.price * amount * currency.value;
+                    var distancePriceSign = currency.sign;
+                    return distance + ',' + distancePrice + '' + distancePriceSign;
                 }
 
             }
